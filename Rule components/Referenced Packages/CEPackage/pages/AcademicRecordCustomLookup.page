@@ -1,5 +1,0 @@
-<apex:page id="thePage" StandardController="CETesting__Academic_Record__c">
-    <apex:pageBlock id="pb1"> 
-        <c:CustomLookup id="customLkp" sobjectType="Academic_Record__c"/>
-    </apex:pageBlock>
-</apex:page>
