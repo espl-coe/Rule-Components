@@ -111,25 +111,10 @@ public with sharing class DecodeRuleImplementatiion {
                                             }
                                         }// for loop end
                                         
-                                        if(containsrule.size() ==1 && FinalResult && FinalResult !=null){
-                                            RuleEngineController.eventGenerator(FinalResult,object_instance,
-                                                           RuleEngineController.ruleConditionMap.get(ruleCondItr),
-                                                           ptopicNameRuleCond);
-                                            containsrule.clear();
-                                            containsOperator.clear();
-                                        }
+                                       
                                      }// containsRule size greater than 1 ends
                                      // Send the final value to eventGenerator when containsRule have on 1 value on their end position
-                                     else{
-                                        if(FinalResult && FinalResult !=null){
-                                            RuleEngineController.eventGenerator(FinalResult,
-                                                                                object_instance,
-                                                                                RuleEngineController.ruleConditionMap.get(ruleCondItr),
-                                                                                ptopicNameRuleCond);
-                                            containsrule.clear();
-                                            containsOperator.clear();
-                                        }
-                                     }
+                                     
                                 } //Or check end
                                 else if(ruleOperator.equals('&')){
                                     FinalResult = runOrOperation(ruleCondFor1,
@@ -173,38 +158,12 @@ public with sharing class DecodeRuleImplementatiion {
                                                 containsrule.add(String.valueOf(FinalResult));
                                             }
                                         }
-                                        if(containsrule.size() ==1 && FinalResult && FinalResult !=null){
-                                            RuleEngineController.eventGenerator(FinalResult,
-                                                                                object_instance,
-                                                                                RuleEngineController.ruleConditionMap.get(ruleCondItr),
-                                                                                ptopicNameRuleCond);
-                                            containsrule.clear();
-                                            containsOperator.clear();
-                                        }
+                                        
                                     }
-                                    else{
-                                        if(FinalResult && FinalResult !=null){
-                                            RuleEngineController.eventGenerator(FinalResult,
-                                                                                object_instance,
-                                                                                RuleEngineController.ruleConditionMap.get(ruleCondItr),
-                                                                                ptopicNameRuleCond);
-                                            containsrule.clear();
-                                            containsOperator.clear();
-                                        }
-                                    }
+                                    
                                 }
                              }//if containsRule siz is greater than 1
-                             else {
-                                 FinalResult = boolean.valueOf(containsrule.get(topVarRule));
-                                 if(FinalResult && FinalResult !=null){
-                                    RuleEngineController.eventGenerator(FinalResult,
-                                                                        object_instance,
-                                                                        RuleEngineController.ruleConditionMap.get(ruleCondItr),
-                                                                        ptopicNameRuleCond);
-                                    containsrule.clear();
-                                    containsOperator.clear();
-                                }
-                             }
+                             
                         }// if ends for the last rule
                         // if String not reached it's end
                         else {
@@ -279,11 +238,7 @@ public with sharing class DecodeRuleImplementatiion {
                                     result = RuleEngineController.runCurrentRule(object_instance,object_instanceOld,CriteriaOfRuleMap.get(clubAllRuleCond)); 
                                     clubAllRuleCond = '';
                                 }
-                                if(result && result !=null){  
-                                    RuleEngineController.eventGenerator(result,object_instance,RuleEngineController.ruleConditionMap.get(ruleCondItr),ptopicNameRuleCond);
-                                    containsrule.clear();
-                                    containsOperator.clear();
-                                }
+                                
                             }       
                     } 
                      k++;
