@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>ContactExternalId__c</fullName>
+        <deprecated>false</deprecated>
+        <description>This field will store the External field Required to map with the External field of the Contact Object.</description>
+        <externalId>true</externalId>
+        <label>Contact External Id</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LeadLink__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Lead Link</label>
+        <length>200</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Name__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <webLinks>
+        <fullName>Create_Contact</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Create Contact</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&apos;/soap/ajax/27.0/connection.js&apos;)}
+
+var ContactRecType = sforce.connection.query(&quot;select id, Name from RecordType where SObjectType = &apos;Contact&apos; and Name = &apos;Student&apos;&quot;);
+
+var associatedContact = new sforce.SObject(&apos;Contact&apos;);
+if(&apos;{!Case.Name__c}&apos; != &apos;&apos;){
+   associatedContact.LastName = &apos;{!Case.Name__c}&apos;; 
+
+if(&apos;{!Case.SuppliedEmail}&apos; != &apos;&apos;){
+   associatedContact.Email = &apos;{!Case.SuppliedEmail}&apos;;
+}
+if(&apos;{!Case.SuppliedPhone}&apos; != &apos;&apos;){
+   associatedContact.Phone = &apos;{!Case.SuppliedPhone}&apos; ;
+}
+associatedContact.RecordTypeId = ContactRecType.records.Id;
+var ContactRec = sforce.connection.query(&quot;select id, LastName,Email from Contact where  LastName= &apos;{!Case.Name__c}&apos; AND Email = &apos;{!Case.SuppliedEmail}&apos; AND Phone = &apos;{!Case.SuppliedPhone}&apos; LIMIT 1  &quot;);
+//alert(ContactRec.size);
+if(&apos;{!Case.ContactId}&apos; != &apos;&apos;){
+    alert(&apos;This case is already associated to a Contact Record.&apos;);
+}else{
+    result = sforce.connection.create([associatedContact]);
+    var ContactRecSecond = sforce.connection.query(&quot;select id, LastName,Email from Contact where  LastName= &apos;{!Case.Name__c}&apos; AND Email = &apos;{!Case.SuppliedEmail}&apos; AND Phone = &apos;{!Case.SuppliedPhone}&apos; LIMIT 1  &quot;);
+
+if(ContactRecSecond.size != 0){
+    //alert(&apos;hi&apos;);
+    var associatedCase = new sforce.SObject(&apos;Case&apos;);
+    associatedCase.Id = &apos;{!Case.Id}&apos;;
+    associatedCase.ContactId = ContactRecSecond .records.Id;
+
+    sforce.connection.update([associatedCase]);
+    window.location = &quot;/&quot; + ContactRecSecond .records.Id ;
+   //location.reload(true);
+  }
+}
+}else{
+    alert(&apos;Please fill up &quot;Name&quot; to create new Contact Record.&apos;);
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Create_Lead</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Create Lead</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <url>/00Q/e?retURL={!Case.Id}&amp;name_lastlea2={!Case.Name__c}&amp;lea11={!Case.SuppliedEmail}&amp;lea8={!Case.SuppliedPhone}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Create_Opportunity</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Create Opportunity</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <url>/006/e?retURL={!Case.Id}&amp;opp4={!Case.Account}</url>
+    </webLinks>
+</CustomObject>

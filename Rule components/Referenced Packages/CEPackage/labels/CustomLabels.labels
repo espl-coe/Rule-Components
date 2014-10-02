@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>ContactRecordTypeURL</fullName>
+        <categories>Contact Record Type page URL</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>ContactRecordTypeURL</shortDescription>
+        <value>/setup/ui/recordtypeselect.jsp?ent=Contact&amp;retURL=/apex/contactsearch&amp;save_new_url=/003/e?retURL=/003/o&amp;nooverride=1</value>
+    </labels>
+    <labels>
+        <fullName>Contact_Association_Message</fullName>
+        <categories>Contact Association Validation</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Contact Association Message</shortDescription>
+        <value>There are no Contact Associations</value>
+    </labels>
+    <labels>
+        <fullName>Contact_Search_Message</fullName>
+        <categories>Search Validation Message</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Contact Search Message</shortDescription>
+        <value>No related Contact records available</value>
+    </labels>
+    <labels>
+        <fullName>Duplicate_Contact_Association_Message</fullName>
+        <categories>Duplicate Association Message</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Duplicate Contact Association Message</shortDescription>
+        <value>There already exists Contact association for all the Record Types. Please refer to the Contact Link</value>
+    </labels>
+    <labels>
+        <fullName>Duplicate_Contact_Link_Association_Message</fullName>
+        <categories>Duplicate Association Message</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Duplicate Contact Link Association Message</shortDescription>
+        <value>The selected Contact already has a Contact Link record associated with it.</value>
+    </labels>
+    <labels>
+        <fullName>Error_Message_On_Access_Restricted_Fields</fullName>
+        <categories>Edit Permission handler For Triggers</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error Message On Access Restricted Fields</shortDescription>
+        <value>You do not have the permission to edit the</value>
+    </labels>
+    <labels>
+        <fullName>Error_Message_On_No_Profile_Matched</fullName>
+        <categories>Edit Permission handler For Triggers</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Error Message On No Profile Matched</shortDescription>
+        <value>Your profile do not have permissions to edit this record.</value>
+    </labels>
+    <labels>
+        <fullName>OrderErrorMessage</fullName>
+        <categories>Order Errors</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OrderErrorMessage</shortDescription>
+        <value>Pricebook of associating opportunity is different than current order&apos;s pricebook.</value>
+    </labels>
+    <labels>
+        <fullName>OrderErrorMessage_for_Pricebook</fullName>
+        <categories>Order Errors</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OrderErrorMessage_for Pricebook</shortDescription>
+        <value>Can&apos;t change the pricebook because products are already associated with current pricebook.</value>
+    </labels>
+    <labels>
+        <fullName>OrderErrorMessageonInsert</fullName>
+        <categories>Order Errors</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>OrderErrorMessageonInsert</shortDescription>
+        <value>Associating contract&apos;s &amp; opportunity&apos;s pricebook are different.</value>
+    </labels>
+    <labels>
+        <fullName>Source_Contact_Deletion_Message</fullName>
+        <categories>Source Contact Deletion</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Source Contact Deletion Message</shortDescription>
+        <value>Source Contact Record Deleted.</value>
+    </labels>
+</CustomLabels>
